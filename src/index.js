@@ -115,6 +115,10 @@ class Game extends React.Component {
 
     }
 
+    getClassName(i) {
+        return this.state.stepNumber === i ? 'bold':'';
+    }
+
 
 
     render() {
@@ -127,7 +131,9 @@ class Game extends React.Component {
             const desc = move? 'Go to move #' + move : 'Go to game start';
             return (
                 <li>
-                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
+                    <button onClick={() => this.jumpTo(move)}>
+                        <span className={this.getClassName(move)}>{desc}</span>
+                    </button>
                 </li>
             )
         });
